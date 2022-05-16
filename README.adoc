@@ -1,0 +1,19 @@
+= fftoml
+
+toml implementation for ff and ffcli. 
+allows skipping table levels to better compose config files for cli applications
+
+It is based on 
+
+But adds:
+
+WithTableSkip is an option which configures a value which will be skipped in keynames.
+For example, given the following TOML
+[code, toml]
+----
+    [section.subsection]
+    value = 10
+----
+Parse will match to a flag with the name `-section.subsection.value` by default.
+if the tableskip is `section`. Parse will match to a flag `-subsection.value` instead
+
